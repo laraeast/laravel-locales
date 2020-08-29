@@ -1,6 +1,6 @@
 <?php
 
-namespace Elnooronline\LaravelLocales\Exceptions;
+namespace Laraeast\LaravelLocales\Exceptions;
 
 class NotSupportedLocaleException extends \Exception
 {

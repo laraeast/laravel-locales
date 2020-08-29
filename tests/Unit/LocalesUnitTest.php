@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Elnooronline\LaravelLocales\Facades\Locales;
-use Elnooronline\LaravelLocales\Exceptions\NotSupportedLocaleException;
+use Laraeast\LaravelLocales\Facades\Locales;
+use Laraeast\LaravelLocales\Exceptions\NotSupportedLocaleException;
 
 class LocalesUnitTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Elnooronline\LaravelLocales\Facades;
+namespace Laraeast\LaravelLocales\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static string getName()
  * @method static string getDir()
  * @method static string getFlag()
- * @package Elnooronline\LaravelLocales\Facades
+ * @package Laraeast\LaravelLocales\Facades
  */
 class Locales extends Facade
 {

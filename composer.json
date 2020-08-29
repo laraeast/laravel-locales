@@ -1,5 +1,5 @@
 {
-    "name": "elnooronline/laravel-locales",
+    "name": "laraeast/laravel-locales",
     "description": "The package used to support multi locales in your application.",
     "type": "package",
     "license": "MIT",
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elnooronline\\LaravelLocales\\": "src/"
+            "Laraeast\\LaravelLocales\\": "src/"
         }
     },
     "autoload-dev": {
@@ -29,10 +29,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Elnooronline\\LaravelLocales\\Providers\\LocalesServiceProvider"
+                "Laraeast\\LaravelLocales\\Providers\\LocalesServiceProvider"
             ],
             "aliases": {
-                "Locales": "Elnooronline\\LaravelLocales\\Facades\\Locales"
+                "Locales": "Laraeast\\LaravelLocales\\Facades\\Locales"
             }
         }
     }

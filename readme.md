@@ -6,7 +6,7 @@
 1. Install package
  
     ```bash
-    composer require elnooronline/laravel-locales
+    composer require laraeast/laravel-locales
     ```
 
 2. Edit config/app.php (Skip this step if you are using laravel 5.5+)
@@ -14,13 +14,13 @@
     service provider:
  
     ```php
-    Elnooronline\LaravelLocales\Providers\LocalesServiceProvider::class,
+    Laraeast\LaravelLocales\Providers\LocalesServiceProvider::class,
     ```
  
     class aliases:
  
     ```php
-    'Locales' => Elnooronline\LaravelLocales\Facades\Locales::class,
+    'Locales' => Laraeast\LaravelLocales\Facades\Locales::class,
     ```
  
  3. Configure your custom locales:

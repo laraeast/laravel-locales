@@ -1,9 +1,9 @@
 <?php
 
-namespace Elnooronline\LaravelLocales;
+namespace Laraeast\LaravelLocales;
 
 use Illuminate\Foundation\Application;
-use Elnooronline\LaravelLocales\Exceptions\NotSupportedLocaleException;
+use Laraeast\LaravelLocales\Exceptions\NotSupportedLocaleException;
 
 class LocalesBuilder
 {
@@ -77,7 +77,7 @@ class LocalesBuilder
      *
      * @param string $locale
      * @return void
-     * @throws \Elnooronline\LaravelLocales\Exceptions\NotSupportedLocaleException
+     * @throws \Laraeast\LaravelLocales\Exceptions\NotSupportedLocaleException
      */
     public function set($locale)
     {

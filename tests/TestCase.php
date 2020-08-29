@@ -2,9 +2,9 @@
 
 namespace Tests;
 
-use Elnooronline\LaravelLocales\Facades\Locales;
+use Laraeast\LaravelLocales\Facades\Locales;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Elnooronline\LaravelLocales\Providers\LocalesServiceProvider;
+use Laraeast\LaravelLocales\Providers\LocalesServiceProvider;
 
 class TestCase extends OrchestraTestCase
 {

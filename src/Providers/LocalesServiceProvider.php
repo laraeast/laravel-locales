@@ -1,9 +1,9 @@
 <?php
 
-namespace Elnooronline\LaravelLocales\Providers;
+namespace Laraeast\LaravelLocales\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Elnooronline\LaravelLocales\LocalesBuilder;
+use Laraeast\LaravelLocales\LocalesBuilder;
 
 class LocalesServiceProvider extends ServiceProvider
 {
