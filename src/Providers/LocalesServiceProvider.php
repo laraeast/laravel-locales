@@ -32,7 +32,7 @@ class LocalesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('elnooronline.locales', function ($app) {
+        $this->app->singleton('laraeast.locales', function ($app) {
             return new LocalesBuilder($app);
         });
     }

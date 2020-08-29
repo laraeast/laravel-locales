@@ -25,6 +25,6 @@ class Locales extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'elnooronline.locales';
+        return 'laraeast.locales';
     }
 }
