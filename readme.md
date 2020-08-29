@@ -83,5 +83,5 @@ Locales::getDir();
 Locales::current()->flag;
 // or
 Locales::getFlag();
-// return : /images/flages/us.png
+// return : /images/flags/us.png
 ```
