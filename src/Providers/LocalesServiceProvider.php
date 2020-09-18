@@ -14,8 +14,6 @@ class LocalesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__.'/../../config/locales.php', 'locales');
-
         $this->publishes([
             __DIR__.'/../../config/locales.php' => config_path('locales.php'),
         ], 'locales:config');
@@ -32,6 +30,8 @@ class LocalesServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../../config/locales.php', 'locales');
+
         $this->app->singleton('laraeast.locales', function ($app) {
             return new LocalesBuilder($app);
         });
