@@ -1,5 +1,7 @@
 # Release Notes for Laravel Locales
 
+## v4.2.0
+- Add codes() & names() and flags() methods.
 ## v4.1.0
 - Add `from(string|Language $locale)` method.
 ## v4.0.0
