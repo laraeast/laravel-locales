@@ -1,4 +1,10 @@
 # Laravel Multi Locales Package
+<p align="center">
+<a href="https://github.com/laraeast/laravel-locales/actions/workflows/tests.yml"><img src="https://github.com/laraeast/laravel-locales/actions/workflows/tests.yml/badge.svg?branch=master" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laraeast/laravel-locales"><img src="https://poser.pugx.org/laraeast/laravel-locales/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laraeast/laravel-locales"><img src="https://poser.pugx.org/laraeast/laravel-locales/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laraeast/laravel-locales"><img src="https://poser.pugx.org/laraeast/laravel-locales/license.svg" alt="License"></a>
+</p>
 
 > The package used to support multi locales in your application.
 ## Installation
