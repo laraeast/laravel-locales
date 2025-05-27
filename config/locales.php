@@ -1,25 +1,18 @@
 <?php
+
+use Laraeast\LaravelLocales\Enums\Language;
+
 return [
     /*
     |--------------------------------------------------------------------------
     | Application Locales
     |--------------------------------------------------------------------------
     |
-    | Contains an array with the applications available locales.
+    | Contains the application's supported locales.
     |
     */
     'languages' => [
-        'en' => [
-            'code' => 'en',
-            'name' => 'English',
-            'dir' => 'ltr',
-            'flag' => '/images/flags/us.png'
-        ],
-        'ar' => [
-            'code' => 'ar',
-            'name' => 'العربية',
-            'dir' => 'rtl',
-            'flag' => '/images/flags/sa.png'
-        ],
+        Language::EN,
+        Language::AR,
     ],
 ];

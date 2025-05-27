@@ -3,42 +3,36 @@
 namespace Laraeast\LaravelLocales;
 
 use Illuminate\Foundation\Application;
+use Illuminate\Support\HtmlString;
+use Laraeast\LaravelLocales\Enums\Language;
 use Laraeast\LaravelLocales\Exceptions\NotSupportedLocaleException;
 
 class LocalesBuilder
 {
     /**
-     * The application instance.
-     *
-     * @var \Illuminate\Foundation\Application
-     */
-    protected $app;
-
-    /**
      * Application locales.
      *
-     * @var array
+     * @var \Laraeast\LaravelLocales\Enums\Language[]
      */
-    protected $locales = [];
+    protected array $locales = [];
 
     /**
      * Create application instance.
      *
      * @param \Illuminate\Foundation\Application $app
+     * @throws \Laraeast\LaravelLocales\Exceptions\NotSupportedLocaleException
      */
-    public function __construct(Application $app)
+    public function __construct(protected Application $app)
     {
-        $this->app = $app;
-
-        $this->locales = $this->setLocales();
+        $this->setLocales();
     }
 
     /**
      * Get the supported locales.
      *
-     * @return array
+     * @return \Laraeast\LaravelLocales\Enums\Language[]
      */
-    public function get()
+    public function get(): array
     {
         return $this->locales;
     }
@@ -46,85 +40,101 @@ class LocalesBuilder
     /**
      * Get the application locale.
      *
-     * @return object|null
+     * @return Language|null
      */
-    public function current()
+    public function current(): ?Language
     {
-        return $this->locales[$this->app->getLocale()] ?? null;
+        $locales = array_filter($this->locales, function (Language $locale) {
+            return $locale->getCode() === $this->app->getLocale();
+        });
+
+        return reset($locales);
     }
 
     /**
      * Set the supported locales.
      *
-     * @return array
+     * @throws \Laraeast\LaravelLocales\Exceptions\NotSupportedLocaleException
      */
-    private function setLocales()
+    protected function setLocales(): void
     {
         $supportedLocales = $this->app['config']->get('locales.languages');
 
         $locales = [];
+
         if (is_array($supportedLocales)) {
-            foreach ($supportedLocales as $code => $locale) {
-                $locales[$code] = (object)$locale;
+            foreach ($supportedLocales as $locale) {
+                if ($locale instanceof Language) {
+                    $locales[] = $locale;
+                    continue;
+                }
+
+                throw new NotSupportedLocaleException('There is not supported language in your config file.');
             }
         }
 
-        return $locales;
+        $this->locales = $locales;
     }
 
     /**
-     * Set the supported locales.
+     * Set the application language.
      *
-     * @param string $locale
-     * @return void
      * @throws \Laraeast\LaravelLocales\Exceptions\NotSupportedLocaleException
      */
-    public function set($locale)
+    public function set(string|Language $locale): void
     {
-        if (! array_key_exists($locale, $this->locales)) {
-            throw new NotSupportedLocaleException;
+        $filteredLocales = array_filter($this->locales, function (Language $language) use ($locale) {
+            if ($locale instanceof Language) {
+                return $language->getCode() === $locale->getCode();
+            }
+
+            return $language->getCode() === $locale;
+        });
+
+        $language = reset($filteredLocales);
+
+        if ($language) {
+            $this->app->setLocale($language->getCode());
+
+            return;
         }
 
-        $this->app->setLocale($locale);
+        throw new NotSupportedLocaleException('The language is not supported.');
     }
 
     /**
      * The code of current locale.
-     *
-     * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
-        return $this->current()->code;
+        return $this->current()->getCode();
     }
 
     /**
      * The name of current locale.
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
-        return $this->current()->name;
+        return $this->current()->getName();
     }
 
     /**
      * The direction of current locale.
-     *
-     * @return string
      */
-    public function getDir()
+    public function getDir(): string
     {
-        return $this->current()->dir;
+        return $this->current()->getDir();
     }
 
     /**
      * The flag url of current locale.
-     *
-     * @return string
      */
-    public function getFlag()
+    public function getSvgFlag(string|int $width = 30, string|int $height = 30): HtmlString
     {
-        return $this->current()->flag;
+        return $this->current()
+            ->getSvgFlag(
+                width: $width,
+                height: $height
+            );
     }
 }
