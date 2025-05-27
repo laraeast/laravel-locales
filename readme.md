@@ -28,32 +28,27 @@
     ```bash
     php artisan vendor:publish --tag="locales:config"
     ```
-     
- 4. Copy locales flags to public:
-  
-    ```bash
-    php artisan vendor:publish --tag="locales:flags"
-    ```
     
 ## Usage
 
 #### Locales selector dropdown:
 ```blade
-<li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <img src="{{ Locales::getFlag() }}">
-        {{ Locales::getName() }}
-    </a>
-    <ul class="dropdown-menu">
-        @foreach(Locales::get() as $locale)
-            <li>
-                <a href="{{ url('locale/'. $locale->code) }}">
-                    {{ $locale->name }}
-                </a>
-            </li>
-        @endforeach
-    </ul>
-</li>
+<div class="dropdown">
+  <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="languageDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    {{ Locales::getSvgFlag(width: 25, height: 25) }}
+    <span class="ms-2">{{ Locales::getName() }}</span>
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="languageDropdownMenuLink">
+    @foreach(Locales::get() as $locale)
+        <li>
+            <a class="dropdown-item" href="{{ url('locale/'. $locale->getCode()) }}">
+                {{ $locale->getName() }}
+            </a>
+        </li>
+    @endforeach
+  </ul>
+</div>
 ```
 #### API
 ```php
@@ -65,23 +60,23 @@ Locales::set('en');
 Locales::current();
 // the current locale instance
 
-Locales::current()->code;
+Locales::current()->getCode();
 // or 
 Locales::getCode();
 // return : en
 
-Locales::current()->name;
+Locales::current()->getName();
 // or 
 Locales::getName();
 // return : English
 
-Locales::current()->dir;
+Locales::current()->getName();
 // or
 Locales::getDir();
 // return : ltr
 
-Locales::current()->flag;
+Locales::current()->getSvgFlag();
 // or
-Locales::getFlag();
-// return : /images/flags/us.png
+Locales::getSvgFlag();
+// return : svg (html)
 ```
