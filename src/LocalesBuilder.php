@@ -44,11 +44,7 @@ class LocalesBuilder
      */
     public function current(): ?Language
     {
-        $locales = array_filter($this->locales, function (Language $locale) {
-            return $locale->getCode() === $this->app->getLocale();
-        });
-
-        return reset($locales);
+        return $this->from($this->app->getLocale());
     }
 
     /**
@@ -83,17 +79,7 @@ class LocalesBuilder
      */
     public function set(string|Language $locale): void
     {
-        $filteredLocales = array_filter($this->locales, function (Language $language) use ($locale) {
-            if ($locale instanceof Language) {
-                return $language->getCode() === $locale->getCode();
-            }
-
-            return $language->getCode() === $locale;
-        });
-
-        $language = reset($filteredLocales);
-
-        if ($language) {
+        if ($language = $this->from($locale)) {
             $this->app->setLocale($language->getCode());
 
             return;
@@ -136,5 +122,20 @@ class LocalesBuilder
                 width: $width,
                 height: $height
             );
+    }
+
+    public function from(string|Language $locale): ?Language
+    {
+        $filteredLocales = array_filter($this->locales, function (Language $language) use ($locale) {
+            if ($locale instanceof Language) {
+                return $language->getCode() === $locale->getCode();
+            }
+
+            return $language->getCode() === $locale;
+        });
+
+        $filteredLocales = array_values($filteredLocales);
+
+        return $filteredLocales[0] ?? null;
     }
 }

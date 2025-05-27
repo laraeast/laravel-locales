@@ -85,4 +85,7 @@ Locales::current()->getSvgFlag();
 // or
 Locales::getSvgFlag();
 // return : svg (html)
+
+Locales::from('en');
+// return : \Laraeast\LaravelLocales\Enums\Language::EN
 ```

@@ -3,6 +3,7 @@
 namespace Laraeast\LaravelLocales\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use Laraeast\LaravelLocales\Enums\Language;
 
 /**
  * Class Locales
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static string getName()
  * @method static string getDir()
  * @method static \Illuminate\Support\HtmlString getSvgFlag(string|int $width = 30, string|int $height = 30)
+ * @method static \Laraeast\LaravelLocales\Enums\Language|null from(string|Language $locale)
  * @package Laraeast\LaravelLocales\Facades
  */
 class Locales extends Facade
