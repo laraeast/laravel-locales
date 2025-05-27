@@ -1,5 +1,7 @@
 # Release Notes for Laravel Locales
 
+## v4.1.0
+- Add `from(string|Language $locale)` method.
 ## v4.0.0
 - Add minimum version of php ^8.0.
 - Add minimum version of laravel framework v9.x.
