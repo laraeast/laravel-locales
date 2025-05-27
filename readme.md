@@ -88,4 +88,13 @@ Locales::getSvgFlag();
 
 Locales::from('en');
 // return : \Laraeast\LaravelLocales\Enums\Language::EN
+
+Locales::codes();
+// return array of configured languages codes: ['en', 'ar', 'fr'. '...etc']
+
+Locales::names();
+// return array of configured languages names: ['English', 'العربية', 'Français'. '...etc']
+
+Locales::flags(width: 30, height: 30);
+// return array of configured languages svg flags with width=30 and height=30
 ```

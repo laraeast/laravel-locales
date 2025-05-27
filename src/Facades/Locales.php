@@ -29,4 +29,28 @@ class Locales extends Facade
     {
         return 'laraeast.locales';
     }
+
+    /**
+     * Get an array of locales codes.
+     */
+    public static function codes(): array
+    {
+        return array_map(fn($case) => $case->getCode(), config('locales.languages'));
+    }
+
+    /**
+     * Get an array of locales names.
+     */
+    public static function names(): array
+    {
+        return array_map(fn($case) => $case->getName(), config('locales.languages'));
+    }
+
+    /**
+     * Get an array of locales flags.
+     */
+    public static function flags(string|int $width = 30, string|int $height = 30): array
+    {
+        return array_map(fn($case) => $case->getSvgFlag($width, $height)->toHtml(), config('locales.languages'));
+    }
 }
