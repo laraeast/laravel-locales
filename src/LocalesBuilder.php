@@ -19,7 +19,6 @@ class LocalesBuilder
     /**
      * Create application instance.
      *
-     * @param \Illuminate\Foundation\Application $app
      * @throws \Laraeast\LaravelLocales\Exceptions\NotSupportedLocaleException
      */
     public function __construct(protected Application $app)
@@ -39,8 +38,6 @@ class LocalesBuilder
 
     /**
      * Get the application locale.
-     *
-     * @return Language|null
      */
     public function current(): ?Language
     {
@@ -62,6 +59,7 @@ class LocalesBuilder
             foreach ($supportedLocales as $locale) {
                 if ($locale instanceof Language) {
                     $locales[] = $locale;
+
                     continue;
                 }
 

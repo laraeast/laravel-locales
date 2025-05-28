@@ -4,17 +4,15 @@ namespace Tests;
 
 use Laraeast\LaravelLocales\Enums\Language;
 use Laraeast\LaravelLocales\Facades\Locales;
-use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Laraeast\LaravelLocales\Providers\LocalesServiceProvider;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 class TestCase extends OrchestraTestCase
 {
     /**
      * Setup the test environment.
-     *
-     * @return void
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -24,14 +22,14 @@ class TestCase extends OrchestraTestCase
                     Language::EN,
                     Language::AR,
                 ],
-            ]
+            ],
         ]);
     }
 
     /**
      * Load package service provider
      *
-     * @param  \Illuminate\Foundation\Application $app
+     * @param  \Illuminate\Foundation\Application  $app
      * @return array
      */
     protected function getPackageProviders($app)
@@ -42,7 +40,7 @@ class TestCase extends OrchestraTestCase
     /**
      * Load package alias
      *
-     * @param  \Illuminate\Foundation\Application $app
+     * @param  \Illuminate\Foundation\Application  $app
      * @return array
      */
     protected function getPackageAliases($app)
@@ -55,19 +53,18 @@ class TestCase extends OrchestraTestCase
     /**
      * Minify html content.
      *
-     * @param $input
      * @return string|string[]|null
      */
     protected function minifyHtml($input): string|array|null
     {
-        if (trim($input) === "") {
+        if (trim($input) === '') {
             return $input;
         }
         // Remove extra white-space(s) between HTML attribute(s)
         $input = preg_replace_callback('#<([^\/\s<>!]+)(?:\s+([^<>]*?)\s*|\s*)(\/?)>#s', function ($matches) {
             return '<'.$matches[1].preg_replace('#([^\s=]+)(\=([\'"]?)(.*?)\3)?(\s+|$)#s', ' $1$2',
-                    $matches[2]).$matches[3].'>';
-        }, str_replace("\r", "", $input));
+                $matches[2]).$matches[3].'>';
+        }, str_replace("\r", '', $input));
 
         return preg_replace(
             [
@@ -105,7 +102,7 @@ class TestCase extends OrchestraTestCase
                 '<$1$2',
                 '$1 ',
                 '$1',
-                "",
+                '',
             ],
             $input);
     }

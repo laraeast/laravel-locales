@@ -16,7 +16,6 @@ use Laraeast\LaravelLocales\Enums\Language;
  * @method static string getDir()
  * @method static \Illuminate\Support\HtmlString getSvgFlag(string|int $width = 30, string|int $height = 30)
  * @method static \Laraeast\LaravelLocales\Enums\Language|null from(string|Language $locale)
- * @package Laraeast\LaravelLocales\Facades
  */
 class Locales extends Facade
 {
@@ -35,7 +34,7 @@ class Locales extends Facade
      */
     public static function codes(): array
     {
-        return array_map(fn($case) => $case->getCode(), config('locales.languages'));
+        return array_map(fn ($case) => $case->getCode(), config('locales.languages'));
     }
 
     /**
@@ -43,7 +42,7 @@ class Locales extends Facade
      */
     public static function names(): array
     {
-        return array_map(fn($case) => $case->getName(), config('locales.languages'));
+        return array_map(fn ($case) => $case->getName(), config('locales.languages'));
     }
 
     /**
@@ -51,6 +50,6 @@ class Locales extends Facade
      */
     public static function flags(string|int $width = 30, string|int $height = 30): array
     {
-        return array_map(fn($case) => $case->getSvgFlag($width, $height)->toHtml(), config('locales.languages'));
+        return array_map(fn ($case) => $case->getSvgFlag($width, $height)->toHtml(), config('locales.languages'));
     }
 }

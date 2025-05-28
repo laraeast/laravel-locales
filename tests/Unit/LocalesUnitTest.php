@@ -3,9 +3,9 @@
 namespace Tests\Unit;
 
 use Laraeast\LaravelLocales\Enums\Language;
-use Tests\TestCase;
-use Laraeast\LaravelLocales\Facades\Locales;
 use Laraeast\LaravelLocales\Exceptions\NotSupportedLocaleException;
+use Laraeast\LaravelLocales\Facades\Locales;
+use Tests\TestCase;
 
 class LocalesUnitTest extends TestCase
 {

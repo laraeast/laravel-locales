@@ -158,9 +158,9 @@ enum Language: string
     {
         $svg = file_get_contents(__DIR__."/../../flags/{$this->value}.svg");
 
-        $svg = preg_replace('/\swidth="[^"]*"/', ' width="' . $width . '"', $svg);
+        $svg = preg_replace('/\swidth="[^"]*"/', ' width="'.$width.'"', $svg);
 
-        $svg = preg_replace('/\sheight="[^"]*"/', ' height="' . $height . '"', $svg);
+        $svg = preg_replace('/\sheight="[^"]*"/', ' height="'.$height.'"', $svg);
 
         return new HtmlString($svg);
     }
