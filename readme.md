@@ -123,3 +123,5 @@ export default [
     }
 ];
 ```
+
+It recommended to use [locales-manager](https://www.npmjs.com/package/locales-manager) js plugin to works with javascript.
