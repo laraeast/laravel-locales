@@ -125,3 +125,18 @@ export default [
 ```
 
 It recommended to use [locales-manager](https://www.npmjs.com/package/locales-manager) js plugin to works with javascript.
+
+```shell
+npm i locales-manager --save-dev
+```
+
+```js
+import Locales from "locales-manager";
+import supportedLocales from "./data/supported-locales";
+
+let locales = new Locales(supportedLocales);
+
+locales.setLocale('ar')
+
+console.log(locales.current().getName()) // Arabic
+```
