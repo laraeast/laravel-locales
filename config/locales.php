@@ -15,4 +15,16 @@ return [
         Language::EN,
         Language::AR,
     ],
+
+    'js' => [
+        /*
+        |--------------------------------------------------------------------------
+        | Using javascript
+        |--------------------------------------------------------------------------
+        |
+        | Generated locales file path for javascript when run "php artisan locales:generate-js"
+        |
+        */
+        'file_path' => resource_path('/js/data/supported-locales.ts'),
+    ],
 ];
