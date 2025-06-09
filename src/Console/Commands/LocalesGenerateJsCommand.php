@@ -43,7 +43,7 @@ class LocalesGenerateJsCommand extends Command
             ];
         }, config('locales.languages'));
 
-        $content = sprintf("export default %s;",
+        $content = sprintf('export default %s;',
             json_encode($locales, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 
         file_put_contents($path, $content);
@@ -59,7 +59,7 @@ class LocalesGenerateJsCommand extends Command
         // Remove extra white-space(s) between HTML attribute(s)
         $input = preg_replace_callback('#<([^\/\s<>!]+)(?:\s+([^<>]*?)\s*|\s*)(\/?)>#s', function ($matches) {
             return '<'.$matches[1].preg_replace('#([^\s=]+)(\=([\'"]?)(.*?)\3)?(\s+|$)#s', ' $1$2',
-                    $matches[2]).$matches[3].'>';
+                $matches[2]).$matches[3].'>';
         }, str_replace("\r", '', $input));
 
         return preg_replace(
