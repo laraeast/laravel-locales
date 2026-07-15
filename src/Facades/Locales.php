@@ -34,7 +34,7 @@ class Locales extends Facade
      */
     public static function codes(): array
     {
-        return array_map(fn ($case) => $case->getCode(), config('locales.languages'));
+        return array_map(fn (Language $locale) => $locale->getCode(), static::get());
     }
 
     /**
@@ -42,7 +42,7 @@ class Locales extends Facade
      */
     public static function names(): array
     {
-        return array_map(fn ($case) => $case->getName(), config('locales.languages'));
+        return array_map(fn (Language $locale) => $locale->getName(), static::get());
     }
 
     /**
@@ -50,6 +50,6 @@ class Locales extends Facade
      */
     public static function flags(string|int $width = 30, string|int $height = 30): array
     {
-        return array_map(fn ($case) => $case->getSvgFlag($width, $height)->toHtml(), config('locales.languages'));
+        return array_map(fn (Language $locale) => $locale->getSvgFlag($width, $height)->toHtml(), static::get());
     }
 }
