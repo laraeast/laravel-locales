@@ -1,5 +1,11 @@
 # Release Notes for Laravel Locales
 
+## v4.4.0
+- Add support for Laravel framework v13.x.
+- Remove unused `robinncode/onubadok` dependency.
+- `LocalesBuilder` now throws `NotSupportedLocaleException` when `locales.languages` is missing, empty, or not an array, instead of silently continuing with no supported locales.
+- `Locales::codes()`, `Locales::names()` and `Locales::flags()` now read from the validated locales list instead of the raw config value.
+- Extract the duplicated HTML-minifying logic used by `locales:generate-js` and the test suite into `Laraeast\LaravelLocales\Support\Html`.
 ## v4.2.0
 - Add codes() & names() and flags() methods.
 ## v4.1.0

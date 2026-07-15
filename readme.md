@@ -7,6 +7,9 @@
 </p>
 
 > The package used to support multi locales in your application.
+
+Compatible with Laravel 9, 10, 11, 12 and 13.
+
 ## Installation
  
 1. Install package
