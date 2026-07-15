@@ -53,21 +53,17 @@ class LocalesBuilder
     {
         $supportedLocales = $this->app['config']->get('locales.languages');
 
-        $locales = [];
+        if (! is_array($supportedLocales) || empty($supportedLocales)) {
+            throw new NotSupportedLocaleException('The "locales.languages" config value must be a non-empty array of Language enum cases.');
+        }
 
-        if (is_array($supportedLocales)) {
-            foreach ($supportedLocales as $locale) {
-                if ($locale instanceof Language) {
-                    $locales[] = $locale;
-
-                    continue;
-                }
-
+        foreach ($supportedLocales as $locale) {
+            if (! $locale instanceof Language) {
                 throw new NotSupportedLocaleException('There is not supported language in your config file.');
             }
         }
 
-        $this->locales = $locales;
+        $this->locales = $supportedLocales;
     }
 
     /**
