@@ -10,10 +10,8 @@ class LocalesServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->commands([
             LocalesGenerateJsCommand::class,
@@ -25,10 +23,8 @@ class LocalesServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../../config/locales.php', 'locales');
 
